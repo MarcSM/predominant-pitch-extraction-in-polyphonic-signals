@@ -1,6 +1,6 @@
 import numpy as np
 
-def evalOption1(extracted, reference = ''):
+def evalOption1(extracted, reference):
     
     print('-------------------------------------')
 
@@ -17,7 +17,7 @@ def evalOption1(extracted, reference = ''):
     mel2 = []
     with open(reference, 'r') as f:
         for line in f:
-            tmp = line.split('\n')[0].split('\t')
+            tmp = line.split('\n')[0].split('     ')
             mel2.append(tmp)
 
     mel2 = np.array(mel2)
@@ -64,7 +64,9 @@ def evalOption1(extracted, reference = ''):
 
     return totalMatch, pitchMatch, unpitchMatch
 
-def evalOption2(extracted, reference = ''):
+################################################################################
+
+def evalOption2(extracted, reference):
     
     print('-------------------------------------')
 
@@ -81,7 +83,7 @@ def evalOption2(extracted, reference = ''):
     mel2 = []
     with open(reference, 'r') as f:
         for line in f:
-            tmp = line.split('\n')[0].split('\t')
+            tmp = line.split('\n')[0].split('     ')
             mel2.append(tmp)
 
     mel2 = np.array(mel2)
