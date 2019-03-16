@@ -17,7 +17,7 @@ def evalOption1(extracted, reference):
     mel2 = []
     with open(reference, 'r') as f:
         for line in f:
-            tmp = line.split('\n')[0].split('     ')
+            tmp = line.split('\n')[0].split('\t')
             mel2.append(tmp)
 
     mel2 = np.array(mel2)
@@ -83,7 +83,7 @@ def evalOption2(extracted, reference):
     mel2 = []
     with open(reference, 'r') as f:
         for line in f:
-            tmp = line.split('\n')[0].split('     ')
+            tmp = line.split('\n')[0].split('\t')
             mel2.append(tmp)
 
     mel2 = np.array(mel2)
