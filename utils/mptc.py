@@ -31,7 +31,19 @@ def getMostLikely(freq_mat):
     Returns:
         numpy.array of the most likely pitch trajectory.
     """
-    return [frame[0] for frame in freq_mat]
+
+    most_likely_freq_arr = []
+
+    for frame in freq_mat:
+
+        if frame:
+            most_likely_freq_arr.append(frame[0])
+        else:
+            most_likely_freq_arr.append(0)
+
+    return most_likely_freq_arr
+
+    #return [frame[0] for frame in freq_mat if frame]
 
 def octaveCorrection(freq_arr, tol_percent=TOL_PERCENT):
     """Corrects errors of an octave shift from frame to frame.
