@@ -18,6 +18,8 @@ OUTPUT_PLOT_FOLDER = os.path.join(DATASET_PATH, "plots")
 REF_CSV_FOLDER = os.path.join(DATASET_PATH, "ref_csv")
 EXT_CSV_FOLDER = os.path.join(DATASET_PATH, "ext_csv")
 ERROR_CSV_FILE = os.path.join(DATASET_PATH, "error.csv")
+ERROR_WINNER_CSV_FILE = os.path.join(DATASET_PATH, "resuts.csv")
+ERROR_COMP_CSV_FILE = os.path.join(DATASET_PATH, "comp.csv")
 
 if not os.path.isdir(OUTPUT_PLOT_FOLDER): os.makedirs(OUTPUT_PLOT_FOLDER)
 if not os.path.isdir(REF_CSV_FOLDER): os.makedirs(REF_CSV_FOLDER)
@@ -34,4 +36,4 @@ TOL_PERCENT = 1
 ENERGY_THRESHOLD = 0.1
 
 #default threshold for frequency diff mask
-MIDI_TH = 0.1
+MIDI_TH = 0.25

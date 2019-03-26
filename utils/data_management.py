@@ -2,6 +2,7 @@ from utils.constants import *
 import os
 import numpy as np
 import essentia.standard as estd
+import pandas as pd
 
 def load_dataset():
     """Gets all wav files in the WAV_FOLDER and returns a list of the names.
@@ -58,3 +59,49 @@ def save_pitch(pitch: list, filename: str):
             
             txtfile.write("{:.3f}".format(c1)+"     " +
                           "{:.3f}".format(c2) + "\n")
+
+def calculate_average_tsv(filepath):
+    """Computes and appends the average values per columns in a tsv file
+    
+    Args:
+        filepath: path to the file to be computed the average from
+        
+    """
+
+    with open(ERROR_CSV_FILE,'r') as tsvfile:
+        df = pd.read_csv(tsvfile, sep='\t', header = None,index_col = 0)
+        
+    del df.index.name
+    df.columns = np.arange(len(df.columns))
+    average = []
+    for col in df:
+        tmp = df[col].tolist()
+        average.append(sum(tmp)/len(tmp))
+    df2 = df.from_dict({"Average":average}, orient="index")
+    df = df.append(df2)
+
+    with open(ERROR_CSV_FILE,'w') as tsvfile:
+        df.to_csv(tsvfile, header = False, sep='\t')
+
+def calculate_difference_with_reference(extracted,reference):
+	"""Computes and appends the average values per columns in a tsv file
+
+	Args:
+		filepath: path to the file to be computed the average from
+
+	"""
+	with open(extracted,'r') as tsvfile:
+		extracted_df = pd.read_csv(tsvfile, sep='\t', header = None,index_col = 0)
+
+	with open(reference,'r') as tsvfile:
+		reference_df = pd.read_csv(tsvfile, sep='\t', header = None,index_col = 0)
+
+	extracted_df = extracted_df.sub(reference_df)
+	del extracted_df.index.name
+	extracted_df.columns = ['evalOption1','evalOption2','Average']
+
+	print(extracted_df)
+
+	if os.path.exists(ERROR_COMP_CSV_FILE): os.remove(ERROR_COMP_CSV_FILE)
+	with open(ERROR_COMP_CSV_FILE, 'w') as tsvfile:
+		extracted_df.to_csv(tsvfile, header = False, sep='\t')
