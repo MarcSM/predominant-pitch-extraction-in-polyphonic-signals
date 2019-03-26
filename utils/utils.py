@@ -1,6 +1,7 @@
 import numpy as np
 from utils.constants import *
 from scipy import signal
+import pandas as pd
 
 def autocorrelation(x_win, sr=SAMPLE_RATE, minF0=MIN_F0, maxF0=MAX_F0):
     """F0 detection on a single frame using autocorrelation
@@ -117,3 +118,26 @@ def apply_masks(array, *args):
     for arg in args:
         array = np.multiply(array, arg)
     return array
+
+def calculate_average_tsv(filepath):
+    """Computes and appends the average values per columns in a tsv file
+    
+    Args:
+        filepath: path to the file to be computed the average from
+        
+    """
+
+    with open(ERROR_CSV_FILE,'r') as tsvfile:
+        df = pd.read_csv(tsvfile, sep='\t', header = None,index_col = 0)
+        
+    del df.index.name
+    df.columns = np.arange(len(df.columns))
+    average = []
+    for col in df:
+        tmp = df[col].tolist()
+        average.append(sum(tmp)/len(tmp))
+    df2 = df.from_dict({"average":average}, orient="index")
+    df = df.append(df2)
+
+    with open(ERROR_CSV_FILE,'w') as tsvfile:
+        df.to_csv(tsvfile, header = False)
