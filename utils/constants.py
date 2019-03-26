@@ -36,4 +36,4 @@ TOL_PERCENT = 1
 ENERGY_THRESHOLD = 0.1
 
 #default threshold for frequency diff mask
-MIDI_TH = 0.8
+MIDI_TH = 0.95
