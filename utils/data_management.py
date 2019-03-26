@@ -104,4 +104,4 @@ def calculate_difference_with_reference(extracted,reference):
 
 	if os.path.exists(ERROR_COMP_CSV_FILE): os.remove(ERROR_COMP_CSV_FILE)
 	with open(ERROR_COMP_CSV_FILE, 'w') as tsvfile:
-		extracted_df.to_csv(tsvfile, header = False, sep='\t')
+		extracted_df.to_csv(tsvfile, sep='\t')
