@@ -42,4 +42,3 @@ def mpd(audio, frameSize=ANALYZE_SOUND_FRAME_SIZE, hopSize=HOP_SIZE):
 
     # Returning the list
     return frame_freq
-

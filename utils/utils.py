@@ -117,3 +117,4 @@ def apply_masks(array, *args):
     for arg in args:
         array = np.multiply(array, arg)
     return array
+    
