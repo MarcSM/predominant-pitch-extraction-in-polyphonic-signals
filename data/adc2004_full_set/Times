@@ -1,0 +1,8 @@
+EXTRACTED
+In average, each file took: 16.60920295715332  s to compute 
+MIDI_TH = 0.95
+ENERGY_THRESHOLD = 0.1
+TOL_PERCENT = 1
+
+ESSENTIA
+In average, each file took: 0.38988308906555175  s to compute
