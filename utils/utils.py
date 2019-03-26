@@ -100,7 +100,7 @@ def freq2MIDI(freq):
         midi: numpy.array containing the midi (non quantized) values.
 
     """
-    freq = np.array(freq)
+    freq = np.clip(freq, a_min=8.175, a_max=12543.854)
     midi = np.log2(freq/440.0) * 12 + 69
     return midi
 

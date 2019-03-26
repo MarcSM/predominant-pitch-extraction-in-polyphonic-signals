@@ -67,7 +67,8 @@ def octaveCorrection(freq_arr, tol_percent=TOL_PERCENT):
 
     for i, freq in enumerate(freq_arr):
         if i < len(freq_arr)-1:
-            ratio = freq/freq_arr[i+1]
+            if freq_arr[i+1] == 0: ratio = 0 
+            else: ratio = freq/freq_arr[i+1]
             if (1-tolerance)*octave_ratio < ratio < (1+tolerance)*octave_ratio:
                 freq_arr[i+1] = octave_ratio * freq_arr[i+1]
             elif (1-tolerance)*inverse_octave_ratio < ratio < (1+tolerance)*inverse_octave_ratio:

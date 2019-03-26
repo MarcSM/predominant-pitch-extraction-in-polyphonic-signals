@@ -12,16 +12,16 @@ def compute_error(filename):
     """
 
     reference = os.path.join(REF_CSV_FOLDER, filename + "REF.txt")
-    extracted = os.path.join(REF_CSV_FOLDER, filename + "REF.txt")
+    extracted = os.path.join(EXT_CSV_FOLDER, filename + "EXT.txt")
 
     totalMatch1, _, _ = evalOption1(extracted, reference)
     totalMatch2, _, _ = evalOption2(extracted, reference)
 
     avg = (totalMatch1 + totalMatch2)/2
 
-    with open(os.path.join(ERROR_CSV_FILE, filename + "EXT.txt"), 'a') as txtfile:
-        txtfile.write(filename + '\t' + totalMatch1 +
-                      '\t' + totalMatch2 + '\t' + avg)
+    with open(ERROR_CSV_FILE, 'a') as txtfile:
+        txtfile.write(filename + '\t' + str(totalMatch1) +
+                      '\t' + str(totalMatch2) + '\t' + str(avg) + '\n')
 
 def evalOption1(extracted, reference):
     """algorithm for the evaluation of melody extractors after option 1
@@ -68,7 +68,10 @@ def evalOption1(extracted, reference):
 
     unpitched = [1 for item in mel2 if float(item)==0.0] 
     nopitchdet = [1 for item1,item2 in zip(mel1,mel2) if (float(item1)==0.0) and (float(item2)==0.0)]
-    unpitchMatch = 100*len(nopitchdet)/len(unpitched)
+    
+    if len(nopitchdet) == len(unpitched): unpitchMatch = 100
+    elif len(unpitched) == 0: unpitchMatch = 0
+    else: unpitchMatch = 100*len(nopitchdet)/len(unpitched)
 
     for item,idx in zip(mel1,range(frames2)):
         if float(item)!=0.0:
@@ -135,7 +138,10 @@ def evalOption2(extracted, reference):
 
     unpitched = [1 for item in mel2 if float(item)==0.0] 
     nopitchdet = [1 for item1,item2 in zip(mel1,mel2) if (float(item1)==0.0) and (float(item2)==0.0)]
-    unpitchMatch = 100*len(nopitchdet)/len(unpitched)
+
+    if len(nopitchdet) == len(unpitched): unpitchMatch = 100
+    elif len(unpitched) == 0: unpitchMatch = 0
+    else: unpitchMatch = 100*len(nopitchdet)/len(unpitched)
 
     for item,idx in zip(mel1,range(frames2)):
         if float(item)!=0.0:
