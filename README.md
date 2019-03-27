@@ -1,37 +1,44 @@
-## Welcome to GitHub Pages
+# MIR Project
 
-You can use the [editor on GitHub](https://github.com/MarcSM/MIR-Project/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This repository contains a docker-compose file to run a Jupyter server. To run the notebooks, you need to first install docker and run the Jupyter server available in the docker image.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Install docker
 
-### Markdown
+### Windows
+https://docs.docker.com/docker-for-windows/install/
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Mac
+https://docs.docker.com/docker-for-mac/install/
 
-```markdown
-Syntax highlighted code block
+### Ubuntu
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce
 
-# Header 1
-## Header 2
-### Header 3
+## Running the Jupyter server 
+In a terminal/console window, change to this directory
 
-- Bulleted
-- List
+On MacOS or Windows, run:
 
-1. Numbered
-2. List
+    docker-compose up
 
-**Bold** and _Italic_ and `Code` text
+On Linux, run the following (this command ensures that any files you create are owned by your own user):
 
-[Link](url) and ![Image](src)
-```
+    JUPYTER_USER_ID=$(id -u) docker-compose up
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The first time you run this command it will download the required docker images (about 2GB in size). If you have previously downloaded the images and would like to update them with the last version, run:
 
-### Jekyll Themes
+    docker-compose pull
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MarcSM/MIR-Project/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Then accesss http://localhost:8888 with your browser and when asked for a
+password use the default password ***mir***
 
-### Support or Contact
+Then, you can access the notebooks of the course from the browser and run them. All data used in the notebooks are not included in this repository due to size concerns. Some of the notebooks require downloading data from Freesound and Dunya using user specific tokens (hence would require that you get a user token and use that). Please refer to notebooks "DownloadDataFrom*" for more info.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Notebooks:
+For half of the tasks/examples, there are two notebook versions: 'LectureX.ipynb' and 'LectureX_solution.ipynb'. The first one is a student version where part of the code is missing (marked with: "Your code starts here" ..."Your code ends here"). The expected output is also involved in the notebook but since part of code is missing, re-running it will not re-produce the same output (unless you fill the expected parts).
+The second version contains a solution (not the solution) and is complete to produce the expected outcome.
+
+##Other help pages:	
+Installation notes on the course web site:
+https://sites.google.com/site/mirspring2018/installation
+
+The course largely uses Essentia algorithms (available in the docker image) for feature extraction. For quick tutorials on how to import and call Essentia algorithms, you can refer to https://essentia.upf.edu/documentation/essentia_python_tutorial.html
