@@ -1,6 +1,4 @@
-# MIR Project
-
-## Predominant pitch extraction in polyphonic signals
+# Predominant pitch extraction in polyphonic signals
 *Performance and accuracy evaluation of PredominantPitchMelodia and the ISMIR’s 2004 contest winner Rui Pedro Paiva*
 
 ### Abstract
