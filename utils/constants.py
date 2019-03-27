@@ -9,7 +9,7 @@ HOP_SIZE = 256  # Parameter used by the "FrameGenerator" and "FFT" functions
 
 os.chdir('..')
 ROOT_PATH = os.getcwd()
-os.chdir('project_notebooks')
+os.chdir('notebooks')
 
 DATASET_PATH = os.path.join(ROOT_PATH, 'data', 'adc2004_full_set')
 
