@@ -1,5 +1,14 @@
 # MIR Project
 
+## Predominant pitch extraction in polyphonic signals
+*Performance and accuracy evaluation of PredominantPitchMelodia and the ISMIR’s 2004 contest winner Rui Pedro Paiva*
+
+### Abstract
+
+Music in general is **polyphonic** (multiple pitches sounding at the same time) and there usually is a melodic line that stands above the rest of the sounds. In this paper, a study of **Rui Pedro Paiva’s** proposed structure for Predominant Pitch Extraction is compared against Essentia’s **PredominantPitchMelodia** and an implementation of the authors based on Paiva’s structural algorithm. These three algorithms have the same goal, which is to detect and isolate the main melodic line from the rest. In the end we conclude that the essentia algorithm is, by today's standards the best in terms of performance and accuracy and we propose some possible lines of further investigation for the work done in this paper.
+
+### Description
+
 This repository contains a docker-compose file to run a Jupyter server. To run the notebooks, you need to first install docker and run the Jupyter server available in the docker image.
 
 ## Install docker
@@ -31,14 +40,4 @@ The first time you run this command it will download the required docker images 
 Then accesss http://localhost:8888 with your browser and when asked for a
 password use the default password ***mir***
 
-Then, you can access the notebooks of the course from the browser and run them. All data used in the notebooks are not included in this repository due to size concerns. Some of the notebooks require downloading data from Freesound and Dunya using user specific tokens (hence would require that you get a user token and use that). Please refer to notebooks "DownloadDataFrom*" for more info.
-
-## Notebooks:
-For half of the tasks/examples, there are two notebook versions: 'LectureX.ipynb' and 'LectureX_solution.ipynb'. The first one is a student version where part of the code is missing (marked with: "Your code starts here" ..."Your code ends here"). The expected output is also involved in the notebook but since part of code is missing, re-running it will not re-produce the same output (unless you fill the expected parts).
-The second version contains a solution (not the solution) and is complete to produce the expected outcome.
-
-##Other help pages:	
-Installation notes on the course web site:
-https://sites.google.com/site/mirspring2018/installation
-
-The course largely uses Essentia algorithms (available in the docker image) for feature extraction. For quick tutorials on how to import and call Essentia algorithms, you can refer to https://essentia.upf.edu/documentation/essentia_python_tutorial.html
+Then, you can access the notebooks from the browser and run them.
